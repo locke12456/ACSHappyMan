@@ -298,12 +298,16 @@ end
 function Hudong:Shuangxiu()--双修判定
 npc1 = ThingMgr:FindThingByID(me.npcObj.ID)
 npc2 = ThingMgr:FindThingByID(story:GetBindThing().ID)
+return GameMain:GetMod("Lua_hudong"):ShuangxiuStart(npc1, npc2)
+end
+
+function Hudong:ShuangxiuStart(npc1, npc2)
 	local random = npc1.LuaHelper:RandomInt(1,100);
 	local tmeili = npc2.LuaHelper:GetCharisma()
 	local pmeili = npc1.LuaHelper:GetCharisma()
 	local tsCD = npc2.LuaHelper:GetModifierStack("ShuangxiuCD");
 	local psCD = npc1.LuaHelper:GetModifierStack("ShuangxiuCD");
-	local zCD = tsCD + psCD
+	local zCD = 0 --tsCD + psCD
 	local Dfxg = CS.XiaWorld.JianghuMgr.Instance:GetJHNpcDataBySeed(npc2.JiangHuSeed).Feature
 	if zCD == 0 then --双方双修CD判定
 		if npc2.IsBrokenNeck == true and npc2.PropertyMgr.Practice.CurNeck.Kind == CS.XiaWorld.g_emGongBottleNeckType.Gold and npc1.Sex == CS.XiaWorld.g_emNpcSex.Male and npc1.LuaHelper:GetDaoHang() > npc2.LuaHelper:GetDaoHang() and npc2.LuaHelper:GetModifierStack("Zhenchaosuo")== 0 and npc2.LuaHelper:GetModifierStack("Zhenchaozhou") == 0 and npc1.LuaHelper:GetModifierStack("Zhenchaosuo")== 0 and npc1.LuaHelper:GetModifierStack("Zhenchaozhou") == 0 then--对方正在结丹主动者是比对方道行高的男性
@@ -436,7 +440,7 @@ npc2 = ThingMgr:FindThingByID(story:GetBindThing().ID)
 							Hudong:xuexi()
 							else
 								if random > 20 and tmeili > 8 then--对方魅力大于8有20%概率发生以下事件
-								npc1.PropertyMgr:AddMaxAge(- 60);
+								npc1.PropertyMgr:AddMaxAge(10);
 								npc2.PropertyMgr:AddMaxAge(30);
 								me:AddMsg(""..npc1.Name.."向"..npc2.Name.."提出双修的邀请，"..npc2.Name.."却显得不太情愿，可"..npc2.Name.."这等绝世容颜显然让"..npc1.Name.."欲火焚身难以自持了\n只见"..npc1.Name.."三下五除二的褪下对方衣衫，信手掏出胯下之物便如急色鬼附身一样在"..npc2.Name.."身上奋战了起来，"..npc1.Name.."的肉棒于于"..npc2.Name.."的蜜穴中来回冲杀，战至酣时"..npc1.Name.."甚至忘记了双修的本意，也管不得什么交而不泄止泄固元了。\n随着一声怒吼声，"..npc1.Name.."将自己滚热的阳精全部灌注于"..npc2.Name.."的蜜穴里。\n虽然这次双修最后还是成功了，但是这次精关失守"..npc1.Name.."损失了近一甲子的寿元。");
 								Hudong:xuexi()
@@ -526,7 +530,11 @@ npc2 = ThingMgr:FindThingByID(story:GetBindThing().ID)
 									Hudong:xuexi()
 									end
 								else
-								me:AddMsg(""..npc2.Name.."：“滚！”");
+									me:AddMsg(""..npc2.Name.."不愿意与"..npc1.Name.."欢好，奈何实力不济，被"..npc1.Name.."按倒在地，强行奸污了……");
+									npc2:AddModifier("NalitongCD");
+									npc1:AddModifier("XianzheCD");
+									npc2.PropertyMgr:AddFeature("Pogua");
+								--me:AddMsg(""..npc2.Name.."：“滚！”");
 								end
 							end
 						end
@@ -816,7 +824,7 @@ npc2 = ThingMgr:FindThingByID(story:GetBindThing().ID)
 	local Dfxg = CS.XiaWorld.JianghuMgr.Instance:GetJHNpcDataBySeed(npc2.JiangHuSeed).Feature
 	local XianzheCD = npc2.LuaHelper:GetModifierStack("XianzheCD");
 	local NalitongCD = npc2.LuaHelper:GetModifierStack("NalitongCD");
-	local seyouCD = NalitongCD + XianzheCD
+	local seyouCD = 0 --NalitongCD + XianzheCD
 	if npc2.IsDeath then
 	me:AddMsg(""..npc2.Name.."已经死了……");
 	elseif npc2.LuaHelper:GetModifierStack("Prison_Modifier2")~= 0 then
@@ -1208,14 +1216,14 @@ npc2 = ThingMgr:FindThingByID(story:GetBindThing().ID)
 	end--ntr判定失败开始色诱剧本
 		if npc1.Sex == CS.XiaWorld.g_emNpcSex.Male then
 			if npc2.Sex == CS.XiaWorld.g_emNpcSex.Male then
-				if meili < 5 and npc2.PropertyMgr:CheckFeature("Feminization") and npc1.LuaHelper:GetGLevel() > npc2.LuaHelper:GetGLevel() then
+				--if meili < 5 and npc2.PropertyMgr:CheckFeature("Feminization") and npc1.LuaHelper:GetGLevel() > npc2.LuaHelper:GetGLevel() then
 				me:AddMsg(""..npc1.Name.."修行间歇越发感觉下体有股欲火熊熊，但却因相貌丑陋苦无同门师姐妹们的垂青，竟然无人愿与"..npc1.Name.."媾和，便想到师姐妹们的居所去顺些裘衣、裘裤、足袋、或是偷窥洗浴、练功以自行解决。没想行至半路却见那外门弟子"..npc2.Name.."正在弯腰处理杂务，那纤瘦的腰肢、滚圆上翘的臀线、隐隐的透出女子之态，"..npc1.Name.."看的竟然有些发痴。\n“"..npc2.Name.."、你过来。”"..npc2.Name.."闻声便停下手中杂务站起身来，见是内门师兄"..npc1.Name.."唤他便恭步迎向前来，俯身作揖。\n"..npc2.Name.."的修行服本就是外门的男弟子统一款式、略显宽大，"..npc1.Name.."目光如电，早已顺着那宽松的领口向内望去。只见"..npc2.Name.."那玉白的肌肤，清秀的锁骨、阳光的照射下散发出粉里透白的霞光。\n"..npc1.Name.."眼中淫邪之光大盛，但也只是一闪而过、随即便消失的一干二净，变得古井不波、真诚而又平和。“你在外门也有些时日了，师兄我虽然不能教你一些本门的功法，但是念在你勤劳本分、这里有一些小小的神通还是可以教于你，你可想学之一二？”\n“诺！”"..npc2.Name.."抬起头来，见"..npc1.Name.."那真诚的目光，惊喜万分，“无量天尊、承蒙师兄恩泽、师弟永世不忘。”\n“你随我来。”"..npc1.Name.."转身便走向附近的树林中，只是那眼中的淫邪之光如同着了火一般，火光大盛、咄咄逼人。\n"..npc1.Name.."与"..npc2.Name.."一前一后往森林深处走去，四下无人，只见"..npc1.Name.."猛然转身，手掐法印、口中念念有词，那眼中的淫邪之光更是毫无遮敛。\n“师兄！你……”"..npc2.Name.."刚想开口询问，便被"..npc1.Name.."用法术束缚、"..npc2.Name.."见"..npc1.Name.."眼中之火，惊慌失措、胡乱挣扎，“师兄……你……求求你饶了我吧……求求你了！”\n"..npc1.Name.."也不答话，任由"..npc2.Name.."惊恐挣扎、高声求饶。啧啧有声道“没想到呀，本门的师弟竟然还有这番姿色，妙！实在是妙！”言罢又掐起法印，"..npc2.Name.."进缓缓的飘了起来。\n“去！”"..npc1.Name.."抬起右手轻轻一点，"..npc2.Name.."的衣裳竟开始逐渐滑落，裸露出大片的玉白色肌肤，纤瘦的小小身躯逐渐显露出来，胸前微微有些隆起的胸肌和两点粉红看的"..npc1.Name.."血脉喷张，下身的肉棒高高抬起，把修行服的下摆撑起一个小小的帐篷。\n"..npc1.Name.."欺身压近，充满欲望的目光如烈火一般灼烧着"..npc2.Name.."裸露出的每一片肌肤，修长的手指划过"..npc2.Name.."的脸颊、锁骨、胸膛、滑进那未被目光侵蚀的地方。\n“别……”\n“嘘。”"..npc1.Name.."轻声打断了"..npc2.Name.."，同时默运功法，一股奇特的香气在两人之间弥散开来。\n这是什么香气？好像在内门师姐的居所附近闻到过，好舒服。"..npc2.Name.."心中疑惑，但是转眼之间"..npc2.Name.."便迷失在这沁人心脾的香氛中。\n"..npc1.Name.."嘿嘿轻笑，褪去了"..npc2.Name.."的衣服，雪白的胴体完全暴露在眼前，没想到不但身形像女子，就连下身也很是相似，"..npc2.Name.."的下身并不硕大，甚至要比普通人小很多，翘立的小肉棒竟如小指一般大小，散发出一股微骚的奶甜气息。\n"..npc1.Name.."不由食指大动，喉结滚动。一口含住"..npc2.Name.."的肉棒，吮动起来。\n"..npc2.Name.."的身体一阵颤抖，檀口大张，一波又一波强烈的快感冲击着全身，宛如狂海之中的一叶扁舟。\n"..npc1.Name.."立刻把自己剥了个精光，挺立的肉棒刺入"..npc2.Name.."口中，前后耸动起来，两人飘立在半空之中，抵死缠绵。\n纠缠半晌，"..npc2.Name.."突然浑身颤抖，双手紧紧的抱着"..npc1.Name.."双腿盘上"..npc1.Name.."的臂膀，发疯了一般套弄着"..npc1.Name.."的肉棒，舌头纠缠着肉棒前段的沟壑。“嗯……”"..npc1.Name.."舒爽的闷哼一声，下身更是猛力一挺，硕大的龟头死死的顶着"..npc2.Name.."的喉咙。精关大开，一股股粘稠的阳精伴着下身的挺动喷薄而出。同时，"..npc1.Name.."也觉得一股滚烫的液体喷入自己口中，微苦而又甘甜。喉结滚动，同时吞下彼此的精华，"..npc2.Name.."也因为"..npc1.Name.."抽出肉棒而清醒了过来。\n两人整理衣衫，"..npc2.Name.."眼神迷离的偎依在"..npc1.Name.."身旁，望着"..npc1.Name.."的脸庞，“师哥……我……”"..npc2.Name.."还未说完，"..npc1.Name.."便用嘴巴堵住了"..npc2.Name.."话语，吻毕，“我会再来找你的。”"..npc1.Name.."说道。！");
 				npc1:AddModifier("XianzheCD");
 				npc2:AddModifier("XianzheCD");
 				npc1.PropertyMgr.RelationData:AddRelationShip(npc2,"Lover");
-				else
-				me:AddMsg(""..npc2.Name.."：滚！");
-				end
+				--else
+				--me:AddMsg(""..npc2.Name.."：滚！");
+				--end
 			elseif npc2.Camp ~= npc1.Camp and npc1.PropertyMgr.Practice.Gong.Name == ("Gong_1701_Tu") and npc1.LuaHelper:GetCharisma() > 9 and npc1.Name == "卓十七"then
 			me:AddMsg(""..npc2.Name.."虽与"..npc1.Name.."处于敌对阵营，可"..npc1.Name.."帅气的脸庞，挺拔的身姿还是深深吸引住了"..npc2.Name.."，只闻得邪魅的"..npc1.Name.."说了一句“这位仙子清丽不凡，何要学那些厮杀莽汉，不如我俩去寻个小树林，痛痛快快的来个一炮泯恩仇如何？”，\n照理说此等放浪言辞按"..npc2.Name.."平日早就祭出法宝将其打杀，可今日不知为何却怎么也下不了手，口中还答曰“郎君如此俊美，所言必是正理……”\n两人寻的一僻静之地褪下衣衫干了个痛快，代"..npc2.Name.."泄身沉沦于满足的肉欲之时，却见"..npc1.Name.."默运六欲心经的采补法诀将对方精元掠夺一空。\n待"..npc2.Name.."发现之时已经无力回天……");
 			npc1:AddModifier("Story_Caibuzhidao1");
@@ -1251,14 +1259,17 @@ npc2 = ThingMgr:FindThingByID(story:GetBindThing().ID)
 			npc2:AddModifier("NalitongCD");
 			npc1:AddModifier("XianzheCD");
 			npc2.PropertyMgr:AddFeature("Pogua");
-			npc2.PropertyMgr.RelationData:AddRelationShip(npc1,"PersonalEnemy");
+			--npc2.PropertyMgr.RelationData:AddRelationShip(npc1,"PersonalEnemy");
 			elseif npc1.LuaHelper:GetGLevel() > npc2.LuaHelper:GetGLevel() and npc2.PropertyMgr:CheckFeature("Pogua") == true then
 			me:AddMsg(""..npc2.Name.."不愿意与"..npc1.Name.."欢好，奈何实力不济，被"..npc1.Name.."按倒在地，强行奸污了……");
 			npc2:AddModifier("NalitongCD");
 			npc1:AddModifier("XianzheCD");
-			npc2.PropertyMgr.RelationData:AddRelationShip(npc1,"PersonalEnemy");
+			--npc2.PropertyMgr.RelationData:AddRelationShip(npc1,"PersonalEnemy");
 			else
-			me:AddMsg(""..npc2.Name.."：滚！");
+			me:AddMsg(""..npc2.Name.."不愿意与"..npc1.Name.."欢好，奈何实力不济，被"..npc1.Name.."按倒在地，强行奸污了……");
+			npc2:AddModifier("NalitongCD");
+			npc1:AddModifier("XianzheCD");
+			npc2.PropertyMgr:AddFeature("Pogua");
 			end
 		elseif npc2.Sex ~= CS.XiaWorld.g_emNpcSex.Male then--百合
 			local sj1 = world:RandomInt(1,3)
@@ -1445,7 +1456,7 @@ npc1 = ThingMgr:FindThingByID(me.npcObj.ID)--徒弟
 npc2 = ThingMgr:FindThingByID(story:GetBindThing().ID)--师父
 local XianzheCD = npc2.LuaHelper:GetModifierStack("XianzheCD");
 local NalitongCD = npc2.LuaHelper:GetModifierStack("NalitongCD");
-local seyouCD = NalitongCD + XianzheCD
+local seyouCD = 0 -- NalitongCD + XianzheCD
 	if npc1.Sex == npc2.Sex or npc1.PropertyMgr.RelationData:IsRelationShipWith("Spouse",npc2) == true or npc1.PropertyMgr.BodyData:PartIsBroken("Genitals") or npc2.PropertyMgr.BodyData:PartIsBroken("Genitals") or seyouCD > 0 then
 	me:AddMsg(""..npc1.Name.."有修行上的问题想要向"..npc2.Name.."请教，但是被"..npc2.Name.."以“现在没空的理由”给拒绝了。");
 	elseif npc1.Sex == CS.XiaWorld.g_emNpcSex.Male and npc2.PropertyMgr:CheckFeature("Pogua") == true then
@@ -1964,7 +1975,7 @@ function Hudong:xuexi()
 		shanghai = world:RandomInt(1,10) / 10
 		cishu = math.floor(shuzi2*10)
 		while cishu > 0 do
-		npc2.LuaHelper:AddDamageRandomPart(4,"LingSpillsInjury",shanghai, "因为双修对象灵力暴走导致的真气溢伤");
+		--npc2.LuaHelper:AddDamageRandomPart(4,"LingSpillsInjury",shanghai, "因为双修对象灵力暴走导致的真气溢伤");
 		cishu = cishu - 1
 		end
 		elseif npc2.LuaHelper:GetProperty("NpcLingMaxValue") > npc1.LuaHelper:GetProperty("NpcLingMaxValue") then
@@ -1973,7 +1984,7 @@ function Hudong:xuexi()
 		shanghai = world:RandomInt(1,10) / 10
 		cishu = math.floor(shuzi2*10)
 		while cishu > 0 do
-		npc1.LuaHelper:AddDamageRandomPart(4,"LingSpillsInjury",shanghai, "因为双修对象灵力暴走导致的真气溢伤");
+		--npc1.LuaHelper:AddDamageRandomPart(4,"LingSpillsInjury",shanghai, "因为双修对象灵力暴走导致的真气溢伤");
 		cishu = cishu - 1
 		end
 		else

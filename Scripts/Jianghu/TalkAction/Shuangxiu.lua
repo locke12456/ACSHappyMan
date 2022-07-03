@@ -36,7 +36,8 @@ function tbTalkAction:Action(player,target)
 	local pmeili = player.LuaHelper:GetCharisma()
 	local tsCD = target.LuaHelper:GetModifierStack("ShuangxiuCD");
 	local psCD = player.LuaHelper:GetModifierStack("ShuangxiuCD");
-	local zCD = tsCD + psCD
+	--local zCD = tsCD + psCD
+	local zCD = 0
 	local Dfxg = CS.XiaWorld.JianghuMgr.Instance:GetJHNpcDataBySeed(target.JiangHuSeed).Feature
 	if zCD == 0 then --双方双修CD判定
 		if target.IsBrokenNeck == true and target.PropertyMgr.Practice.CurNeck.Kind == CS.XiaWorld.g_emGongBottleNeckType.Gold and player.Sex == CS.XiaWorld.g_emNpcSex.Male and player.LuaHelper:GetDaoHang() > target.LuaHelper:GetDaoHang() and target.LuaHelper:GetModifierStack("Zhenchaosuo")== 0 and target.LuaHelper:GetModifierStack("Zhenchaozhou") == 0 and player.LuaHelper:GetModifierStack("Zhenchaosuo")== 0 and player.LuaHelper:GetModifierStack("Zhenchaozhou") == 0 then--对方正在结丹主动者是比对方道行高的男性
@@ -46,7 +47,7 @@ function tbTalkAction:Action(player,target)
 			target.LuaHelper:AddPracticeResource("Ling",target.LuaHelper:GetProperty("NpcLingMaxValue"))
 			player:AddModifier("ShuangxiuCD");
 			target:AddModifier("ShuangxiuCD");
-			player.PropertyMgr:AddMaxAge(- 60);
+			player.PropertyMgr:AddMaxAge(10);
 			else
 			self:SetTxt(""..player.Name.."已经不足一甲子了，想来就算用命去换，也对"..target.Name.."结丹帮助不大了……");
 			end
@@ -168,7 +169,7 @@ function tbTalkAction:Action(player,target)
 							self:SetTxt(""..player.Name.."向"..target.Name.."提出双修的邀请，"..target.Name.."显然不太擅长拒绝强者的要求，毕竟在修真界与强者双修本身就是一件挺划得来的事情，对觊觎仙途的修真者们来说，所谓贞洁大不抵只是个笑话罢了\n"..target.Name.."褪下衣衫后便与"..player.Name.."搂作一团翻云覆雨了起来。\n这是一次不错的双修，双方都获得了满足。");
 							else
 								if random > 20 and tmeili > 8 then--对方魅力大于8有20%概率发生以下事件
-								player.PropertyMgr:AddMaxAge(- 60);
+								player.PropertyMgr:AddMaxAge(10);
 								target.PropertyMgr:AddMaxAge(30);
 								self:SetTxt(""..player.Name.."向"..target.Name.."提出双修的邀请，"..target.Name.."却显得不太情愿，可"..target.Name.."这等绝世容颜显然让"..player.Name.."欲火焚身难以自持了\n只见"..player.Name.."三下五除二的褪下对方衣衫，信手掏出胯下之物便如急色鬼附身一样在"..target.Name.."身上奋战了起来，"..player.Name.."的肉棒于于"..target.Name.."的蜜穴中来回冲杀，战至酣时"..player.Name.."甚至忘记了双修的本意，也管不得什么交而不泄止泄固元了。\n随着一声怒吼声，"..player.Name.."将自己滚热的阳精全部灌注于"..target.Name.."的蜜穴里。\n虽然这次双修最后还是成功了，但是这次精关失守"..player.Name.."损失了近一甲子的寿元。");
 								else
@@ -358,7 +359,7 @@ function tbTalkAction:xuexi(player,target)
 		shanghai = world:RandomInt(1,10) / 10
 		cishu = math.floor(shuzi2*10)
 		while cishu > 0 do
-		target.LuaHelper:AddDamageRandomPart(4,"LingSpillsInjury",shanghai, "因为双修对象灵力暴走导致的真气溢伤");
+		--target.LuaHelper:AddDamageRandomPart(4,"LingSpillsInjury",shanghai, "因为双修对象灵力暴走导致的真气溢伤");
 		cishu = cishu - 1
 		end
 	elseif target.LuaHelper:GetProperty("NpcLingMaxValue") > player.LuaHelper:GetProperty("NpcLingMaxValue") then
@@ -367,7 +368,7 @@ function tbTalkAction:xuexi(player,target)
 		shanghai = world:RandomInt(1,10) / 10
 		cishu = math.floor(shuzi2*10)
 		while cishu > 0 do
-		player.LuaHelper:AddDamageRandomPart(4,"LingSpillsInjury",shanghai, "因为双修对象灵力暴走导致的真气溢伤");
+		--player.LuaHelper:AddDamageRandomPart(4,"LingSpillsInjury",shanghai, "因为双修对象灵力暴走导致的真气溢伤");
 		cishu = cishu - 1
 		end
 	else

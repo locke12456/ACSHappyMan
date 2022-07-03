@@ -566,7 +566,10 @@ local JLEHG = me:GetModifierStack("Jinlinger");
 		world:SetWorldFlag(1702,1)
 		me:TriggerStory("NPC_Jinlinger");
 	else
-	me:AddModifier("Jinlinger");
+		for i = 1,80 do
+		  me:AddModifier("Jinlinger");
+		end
+	
 	local buff = me.npcObj.PropertyMgr:FindModifier("Jinlinger");
 		if me:GetSex() == 2 then
 			if me:GetModifierStack("Story_Caibuzhidao1") >= 100 then
@@ -1407,7 +1410,7 @@ end
 
 function Hudong:shiqi67()--苏小赞被荆棘宫丝玩弄事件
 me:AddMsg("好奇心驱使着[NAME]紧跟这些被引导的灵魂潜入了眼前这诡异大宅，伏身于大宅正堂上方的[NAME]，小心翼翼的移开了一枚瓦片，长眼望去一个“巨大”的女人映入眼帘。\n的确，就是“巨大”，即使她是倚靠在那张足被称为通铺的贵妃床上，依[NAME]目测此女也至少有这三四米高的样子，不光仅只是高而已，宽度在[NAME]的目测中，差不多也是那样，对方倚在通铺级的贵妃床上，浑身肥肉如同流体一般层层叠叠的铺满了整个床榻。\n床榻之下，一名后庭中插着一条黄白相间狗尾的男子匍匐于地，探出舌尖舔舐着这女“巨人”的大脚，仿佛眼前是那无比珍馐的美味，而踏上的女“巨人”贪婪的吸食着这由站场上漂进来的灵魂，不时还发出一声满足的哼哼声。\n随着飘来的灵魂越来越少，女“巨人”仿佛也知道了大战即将结束，只见她一脚往那低伏于她床榻之前，正在用舌尖给她脚趾做保养的俊俏男子头上踩去，一边狠踩还一边对其喷吐着“废物，垃圾”等等恶言。\n发泄了一通不愉快之后，女“巨人”摄起了被踩到头破血流的男子，将其当做一枚巨型的角先生肉苁蓉之类的道具，向自己的下体塞去。\n苏神教的女信徒们绝对不可能会想到，自己那个神泽世人的教主哥哥，居然被一个三四米高的女巨人，当做道具在自己下体抽插着，这根本不是仅仅用残忍就能描述的事情，这堪比绝世的酷刑，每一次短暂的脱离女巨人的下体，这俊俏男子均贪婪的大口呼吸这空气，即使他的眼眶鼻腔和口中都布满了对方下体的所分泌的粘液，而短暂的自由呼吸之后，便是那一插到底……\n[NAME]仅仅只是看，便是止不住的干呕了起来，也正是这干呕，使得[NAME]被那足以称之为魔鬼的女人发现。\n只听对方一声冷哼，[NAME]便感觉整个人被巨锤轰击气血翻腾，脸上的七窍渗出了丝丝鲜血……");
-	if me:CheckFeature("Tiancilonggen") == true and me:CheckFeature("BeautifulFace2") == true and me:CheckFeature("Feminization") == true then--娘炮+惊世美貌+天赐龙根
+	if me:CheckFeature("Tiancilonggen") == true and me:CheckFeature("BeautifulFace2") == true then--娘炮+惊世美貌+天赐龙根
 	me:TriggerStory("Jinjigongsi");
 	else
 	npc1 = ThingMgr:FindThingByID(me.npcObj.ID)
@@ -1706,11 +1709,11 @@ Panding = me:RandomInt(1,9);
 Sjxs = NpcMgr:GetRandomPrefixName("Human",CS.XiaWorld.g_emNpcSex.Male)
 sjnpc = World.map.Things:RandomNpc()
 print(sjnpc)
-	if shiqidejiance == 1 then
-	local wenben = me:ParseNpcStory("[rand_lable=desc_time,desc_place,desc_weather]，"..npc1.Name.."突然很想死，"..npc1.Name.."人没了。")
-	me:AddMsg(wenben);me:AddMemery(wenben);
-	me:ModifierProperty("MaxAge",-99999999);
-	elseif zhangmen ~= nil and zhangmen ~= npc1 and world:GetWorldFlag(1714) == 4 then
+	if world:GetWorldFlag(1714) == 1 then
+		me:AddMsg("周芷若被[NAME]抓到"..SchoolMgr.Name.."已经有些时日了，对于日日不缀来亵玩自己的[NAME]，起初周芷若对此无比厌恶，然而身陷"..SchoolMgr.Name.."的周芷若，既打不过又跑不走，就连自绝心脉也会被对方轻易的用一颗丹药救回来，寻死都不能的周芷若仿佛被突破了那一条由恐惧所守护的心房，甚至对于每日来搂抱投食自己的[NAME]产生了些许依赖感，毕竟即使自己全是上下皆被其把玩了过了，可对方始终没有坏自己的清白，也不限制自己在门派内活动，仿佛对方一直将自己当做一只被圈养的宠物一般对待。\n忽地，环臂搂着周芷若的[NAME]把脸贴了上来，惊愕之下周芷若又习惯性的屈指成爪，直接向[NAME]的脖子袭去，也不见[NAME]闪避，反而在被袭后，笑吟吟的贴上周芷若的脸颊上蹭了两下，呢喃道：“小白，怎么又调皮，在山上是不是呆的不开心，我带你下山去中原玩好不好？”。\n说罢，也不管周芷若愿不愿意，便准备带着周芷若下山去了……");
+		world:SetWorldFlag(1714,2)
+	end
+	if zhangmen ~= nil and zhangmen ~= npc1 and world:GetWorldFlag(1714) == 4 then
 	me:AddMsg(""..zhangmen.Name.."于门中修行，得弟子"..npc1.Name.."禀山下有一群江湖人士前来讨要说法。\n据对方所说近来天下出了一个大魔头四处抓捕江湖侠女以采补邪术祸害之，而其自称是我"..SchoolMgr.Name.."记名弟子，故众人前来讨要一个说法。")
 	zhangmen.LuaHelper:TriggerStory("Suiji09");
 	world:SetWorldFlag(1714,5)
@@ -1866,11 +1869,7 @@ print(sjnpc2)
 if npc3 ~= nil then
 npc4 = npc3.PropertyMgr.Practice.Master
 end
-	if shiqidejiance == 1 then
-	local wenben = me:ParseNpcStory("[rand_lable=desc_time,desc_place,desc_weather]，"..npc1.Name.."突然很想死，"..npc1.Name.."人没了。")
-	me:AddMsg(wenben);me:AddMemery(wenben);
-	me:ModifierProperty("MaxAge",-99999999);
-	elseif zhangmen ~= nil and zhangmen ~= npc1 and world:GetWorldFlag(1714) == 4 then
+	if zhangmen ~= nil and zhangmen ~= npc1 and world:GetWorldFlag(1714) == 4 then
 	me:AddMsg(""..zhangmen.Name.."于门中修行，得弟子"..npc1.Name.."禀山下有一群江湖人士前来讨要说法。\n据对方所说近来天下出了一个大魔头四处抓捕江湖侠女以采补邪术祸害之，而其自称是我"..SchoolMgr.Name.."记名弟子，故众人前来讨要一个说法。")
 	zhangmen.LuaHelper:TriggerStory("Suiji09");
 	world:SetWorldFlag(1714,5)
@@ -2070,11 +2069,13 @@ end
 	elseif npc1.PropertyMgr:CheckFeature("Tianyuannvquan") and npc1.LuaHelper:GetModifierStack("Shouyun") == 0 then
 	me:TriggerStory("Suiji11");
 	else
-	Zhuanqian = me:RandomInt(50,200);
-	local wenben = me:ParseNpcStory(string.format(XT("[rand_lable=desc_time,desc_place,desc_weather]，"..mpName.."弟子"..NanName.."见得"..npc1.Name.."便仿佛丢了魂儿一般，"..npc1.Name.."也算不得什么贞洁烈女，见状即上前谈好价格一次白银%s两，"..NanName.."大喜之余，立刻付了银钱钱与"..npc1.Name.."欢好了一番。"), tostring(Zhuanqian)));
-	me:AddMsg(wenben);me:AddMemery(wenben);
-	me:AddModifier("Qian");
-	me.npcObj.PropertyMgr:FindModifier("Qian"):UpdateStack(Zhuanqian - 1);
+	--Zhuanqian = me:RandomInt(50,200);
+	--local wenben = me:ParseNpcStory(string.format(XT("[rand_lable=desc_time,desc_place,desc_weather]，"..mpName.."弟子"..NanName.."见得"..npc1.Name.."便仿佛丢了魂儿一般，"..npc1.Name.."也算不得什么贞洁烈女，见状即上前谈好价格一次白银%s两，"..NanName.."大喜之余，立刻付了银钱钱与"..npc1.Name.."欢好了一番。"), tostring(Zhuanqian)));
+	--me:AddMsg(wenben);me:AddMemery(wenben);
+	--me:AddModifier("Qian");
+	--me.npcObj.PropertyMgr:FindModifier("Qian"):UpdateStack(Zhuanqian - 1);
+	local wenben = me:ParseNpcStory("一伙路过的散修因为垂涎于"..npc1.Name.."的惊世美貌，故向"..SchoolMgr.Name.."提出了要求，如果"..SchoolMgr.Name.."愿意将"..npc1.Name.."双手奉上，那么他们就不会攻打"..SchoolMgr.Name.."。")
+	me:AddMsg(wenben);me:TriggerStory("Suiji01");
 	end
 end
 
@@ -2160,14 +2161,15 @@ npc1 = ThingMgr:FindThingByID(me.npcObj.ID)
 me:AddMsg("[NAME]答应了蛇妖，让它在钻一次黄鳝洞，只见蛇妖幻化成一条纯白色的小蛇……\n事毕，蛇妖浑身金光大作，褪下那一身凡胎化身为龙，再次与[NAME]于云端欢好\n事又毕，神龙携[NAME]御风而去……")
 World.Weather:BeginWeather("LightningStorm", true, 0, true);
 me:DropAwardItem("Item_MiBao_SLND",1);
-ThingMgr:RemoveThing(npc1,false,true)
+me:AddMsg("[NAME]並沒有，想得美.")
+--ThingMgr:RemoveThing(npc1,false,true)
 end
 
 function Hudong:shiqi1006()
 npc1 = ThingMgr:FindThingByID(me.npcObj.ID)
-	if StoryEx.input == "交谈" or StoryEx.input == "闲聊" or StoryEx.input == "聊天" then
+	if StoryEx.input == "交谈" or StoryEx.input == "闲聊" or StoryEx.input == "聊天" or StoryEx.input == "1" then
 	me:AddMsg("[NAME]与灾民闲聊了几句，便将其驱离了"..SchoolMgr.Name.."……");
-	elseif StoryEx.input == "布施" or StoryEx.input == "帮助" or StoryEx.input == "施舍" then
+	elseif StoryEx.input == "布施" or StoryEx.input == "帮助" or StoryEx.input == "施舍"  or StoryEx.input == "2" then
 		if CS.XiaWorld.OutspreadMgr.Instance:CanCostItem("Item_Flour", 100) then
 		me:AddMsg("[NAME]对灾民们的苦难动了恻隐之心，赠与了灾民一百单位的面粉后，灾民们千恩万谢的一路叩拜着离开了"..SchoolMgr.Name.."。\n[NAME]的仁慈得到了上苍的赞赏，"..SchoolMgr.Name.."乐善好施的名声也传播开了。");
 		CS.XiaWorld.OutspreadMgr.Instance:CostItem(CS.XiaWorld.OutspreadMgr.Region(),"Item_Flour", 100, nil);me:AddSchoolScore(2,100);me:AddPenalty(-1);
@@ -2177,7 +2179,7 @@ npc1 = ThingMgr:FindThingByID(me.npcObj.ID)
 		else
 		me:AddMsg("[NAME]对灾民们的苦难动了恻隐之心，然而门中也没有多余的小麦面粉……只能将灾民们驱离了"..SchoolMgr.Name.."。");
 		end
-	elseif StoryEx.input == "肉身布施" or StoryEx.input == "SEX" or StoryEx.input == "送屄" then
+	elseif StoryEx.input == "肉身布施" or StoryEx.input == "SEX" or StoryEx.input == "送屄" or StoryEx.input == "3" then
 		if npc1.Sex == CS.XiaWorld.g_emNpcSex.Female then
 		me:AddMsg("[NAME]对灾民们的苦难动了恻隐之心，虽然没有赠与对方物资食物，但是用身体给与了他们关怀让其感受到"..SchoolMgr.Name.."女菩萨的“温度”。\n灾民的欲望得到满足后，一部分男性灾民们觉得这真特么是个好地方，纷纷决定加入"..SchoolMgr.Name.."成为[NAME]的奴役公狗，[NAME]的仁慈得到了上苍的赞赏，但是"..SchoolMgr.Name.."的名声因为灾民中的部分未加入我宗的女性四处败坏而降低了。");
 		me:AddSchoolScore(2,-100);me:AddPenalty(-1);npc1.LuaHelper:AddModifier("Luding");me.npcObj.PropertyMgr:FindModifier("Luding"):UpdateStack(me:RandomInt(3,10));
@@ -2185,10 +2187,10 @@ npc1 = ThingMgr:FindThingByID(me.npcObj.ID)
 		me:AddMsg("[NAME]对灾民们的苦难动了恻隐之心，虽然没有赠与对方物资食物，但是用身体给与了他们关怀让其感受到"..SchoolMgr.Name.."男神仙的“长度”。\n灾民的欲望得到满足后，一部分女性灾民们觉得这真特么是个好地方，纷纷决定加入"..SchoolMgr.Name.."成为[NAME]的奴役母狗，[NAME]的仁慈得到了上苍的赞赏，但是"..SchoolMgr.Name.."的名声因为灾民中的部分未加入我宗的男性四处败坏而降低了。");
 		me:AddSchoolScore(2,-100);me:AddPenalty(-1);npc1.LuaHelper:AddModifier("Luding2");me.npcObj.PropertyMgr:FindModifier("Luding2"):UpdateStack(me:RandomInt(3,10));
 		end
-	elseif StoryEx.input == "杀害" or StoryEx.input == "宰杀" or StoryEx.input == "捕猎" or StoryEx.input == "狩猎" or StoryEx.input == "屠杀" or StoryEx.input == "屠宰" or StoryEx.input == "吃" then
+	elseif StoryEx.input == "杀害" or StoryEx.input == "宰杀" or StoryEx.input == "捕猎" or StoryEx.input == "狩猎" or StoryEx.input == "屠杀" or StoryEx.input == "屠宰" or StoryEx.input == "吃"  or StoryEx.input == "4" then
 		me:AddMsg("[NAME]将灾民全部屠宰杀害运回山中作为储备粮食……");
 		me:AddPenalty(10);me:DropAwardItem("Item_HumanMeat",300);
-	elseif StoryEx.input == "掳掠" or StoryEx.input == "抓捕" or StoryEx.input == "奴役" or StoryEx.input == "囚禁" or StoryEx.input == "俘虏" then
+	elseif StoryEx.input == "掳掠" or StoryEx.input == "抓捕" or StoryEx.input == "奴役" or StoryEx.input == "囚禁" or StoryEx.input == "俘虏"  or StoryEx.input == "5" then
 		if npc1.GongKind == g_emGongKind.Body then
 		me:AddMsg("[NAME]将灾民统统掳回了宗门榨取至死，榨出的精元及落后则被[NAME]收集起来用于修炼……");
 		npc1.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yinjin",5);
@@ -2203,7 +2205,7 @@ npc1 = ThingMgr:FindThingByID(me.npcObj.ID)
 	elseif StoryEx.input == "离开" then
 	me:AddMsg("[NAME]与灾民闲聊了几句，便将其驱离了"..SchoolMgr.Name.."……");
 	else
-	me:AddMsg("[NAME]不能"..StoryEx.input.."对方");
+	me:AddMsg("[NAME]不能"..StoryEx.input.."对方, command: 1.[聊天]2.[布施]3.[SEX]4.[吃]5.[抓捕]");
 	me:TriggerStory("Suiji05");
 	end
 end
@@ -2403,7 +2405,7 @@ function Hudong:diren003()
 	CS.XiaWorld.ThingMgr.Instance:EquptNpc(npc,12,CS.XiaWorld.g_emNpcRichLable.Richest);
 	Hudong:shanchuzhuangbei()
 	local FBSL = WorldLua:RandomInt(1,7)
-	local LQZD = WorldLua:RandomInt(3000000,9000000)
+	local LQZD = WorldLua:RandomInt(1000000,2000000)
 	npc.PropertyMgr:SetPropertyOverwrite("NpcFight_FabaoNum",FBSL)
 	npc.PropertyMgr:SetPropertyOverwrite("NpcLingMaxValue",LQZD)
 	for i=1,FBSL,1 do

@@ -40,7 +40,7 @@ function tbTalkAction:Action(player,target)
 	target:AddModifier("CaibuCD");
 	player:AddModifier("Story_Caibuzhidao1");
 	player.PropertyMgr:AddMaxAge(1);
-	target.PropertyMgr:AddMaxAge(- 10);
+	target.PropertyMgr:AddMaxAge(5);
 		if player.Sex == CS.XiaWorld.g_emNpcSex.Female and player.PropertyMgr:CheckFeature("Pogua")then
 		player.PropertyMgr:AddFeature("Pogua");
 		end
@@ -66,14 +66,14 @@ function tbTalkAction:Action(player,target)
 			target:AddModifier("CaibuCD");
 			player:AddModifier("Story_Caibuzhidao1");
 			player.PropertyMgr:AddMaxAge(1);
-			target.PropertyMgr:AddMaxAge(- 10);
+			target.PropertyMgr:AddMaxAge(5);
 			else
 				if player.Sex ~= CS.XiaWorld.g_emNpcSex.Male and player.PropertyMgr.RelationData:IsRelationShipWith("Luding2",target) == true then--1是女，且是2的主人
 				self:SetTxt(""..player.Name.."一时性起，感觉下身湿润了，想要自己的公狗"..target.Name.."来干上自己一炮，他解开了贞操锁/咒，让"..target.Name.."在自己身上努力耕耘着，地自然耕不坏，但牛是会累到的。\n事毕，"..player.Name.."采补了一番后心满意足的离开了。");
 				target:AddModifier("CaibuCD");
 				player:AddModifier("Story_Caibuzhidao1");
 				player.PropertyMgr:AddMaxAge(1);
-				target.PropertyMgr:AddMaxAge(- 10);
+				target.PropertyMgr:AddMaxAge(5);
 				else
 					self:SetTxt(""..player.Name.."想要采补"..target.Name.."却见对方指了指下身，"..player.Name.."定睛一看，吐了个“靠”字，便转身离去了。");
 				end
@@ -96,25 +96,25 @@ function tbTalkAction:Action(player,target)
 					target:AddModifier("CaibuCD");
 					player:AddModifier("Story_Caibuzhidao1");
 					player.PropertyMgr:AddMaxAge(1);
-					target.PropertyMgr:AddMaxAge(- 10);
+					target.PropertyMgr:AddMaxAge(5);
 					self:SetTxt(""..player.Name.."将用力搓弄着"..target.Name.."的肉棒和囊袋，"..target.Name.."吃痛的浪叫，"..player.Name.."将脚往"..target.Name.."嘴里一戳，"..target.Name.."舌头不停的舔着入侵异物开始淫叫，"..target.Name.."一时精关不守，一泻千里。\n事毕，"..player.Name.."运转心法将精元吸入体内。");
 					elseif random >= 60 then
 					target:AddModifier("CaibuCD");
 					player:AddModifier("Story_Caibuzhidao1");
 					player.PropertyMgr:AddMaxAge(1);
-					target.PropertyMgr:AddMaxAge(- 10);
+					target.PropertyMgr:AddMaxAge(5);
 					self:SetTxt(""..player.Name.."拔下"..target.Name.."的袜子，一阵痴迷，用自己的鼻尖在"..target.Name.."的脚心轻轻蹭弄，两只手从衣下伸进去，"..target.Name.."抱着"..player.Name.."的头使劲的在"..player.Name.."嘴里抽插起来，不一会便从"..player.Name.."的嘴里流出了乳白的液体。\n事毕，"..player.Name.."将口中的精元吞入腹中开始炼化……");
 					elseif random >= 40 then
 					target:AddModifier("CaibuCD");
 					player:AddModifier("Story_Caibuzhidao1");
 					player.PropertyMgr:AddMaxAge(1);
-					target.PropertyMgr:AddMaxAge(- 10);
+					target.PropertyMgr:AddMaxAge(5);
 					self:SetTxt(""..player.Name.."把下巴支在"..target.Name.."肩膀上，对着"..target.Name.."耳边说我想吃奶，说罢便俯下身含住"..target.Name.."的阳具，又是舔又是吮吸，巨大的刺激让"..target.Name.."很快高潮来临，小哥哥出奶了，"..player.Name.."细细品尝着口中的精元……。\n事毕，"..player.Name.."将品尝完毕的精元吞入腹中开始炼化……");
 					elseif random >= 5 then
 					target:AddModifier("CaibuCD");
 					player:AddModifier("Story_Caibuzhidao1");
 					player.PropertyMgr:AddMaxAge(1);
-					target.PropertyMgr:AddMaxAge(- 10);
+					target.PropertyMgr:AddMaxAge(5);
 					self:SetTxt(""..player.Name.."掐了一个御水诀，让水流变成细流从"..target.Name.."马眼注射进去，"..target.Name.."被刺激的痛苦的呻吟，慢慢的小腹隆起，脚趾都被刺激的屈了起来，在巨大的刺激下"..target.Name.."，痛苦的射出了带血的阳精。\n事毕，"..player.Name.."将"..target.Name.."射出带有丝丝精血的阳精吞入腹中炼化……");
 					else
 					player.PropertyMgr:AddMaxAge(10);
@@ -130,19 +130,19 @@ function tbTalkAction:Action(player,target)
 					target:AddModifier("CaibuCD");
 					player:AddModifier("Story_Caibuzhidao1");
 					player.PropertyMgr:AddMaxAge(1);
-					target.PropertyMgr:AddMaxAge(- 10);
+					target.PropertyMgr:AddMaxAge(5);
 					self:SetTxt(""..player.Name.."掰开"..target.Name.."的玉腿就舔了上去，用舌尖翻开花瓣的外层，直入花心，半盏茶之后，一口接一口香甜的蜜露被吸入腹中……");
 					elseif random >= 33 then
 					target:AddModifier("CaibuCD");
 					player:AddModifier("Story_Caibuzhidao1");
 					player.PropertyMgr:AddMaxAge(1);
-					target.PropertyMgr:AddMaxAge(- 10);
+					target.PropertyMgr:AddMaxAge(5);
 					self:SetTxt(""..player.Name.."一之手掐着绵软的双峰，一只手探入"..target.Name.."蜜穴之中轻轻扣弄，只感觉那蜜穴越吸越紧，"..player.Name.."猛地将手指往中心一挑，只见"..target.Name.."就这么瘫软在怀中，蜜水喷湿了整个下摆……");
 					else
 					target:AddModifier("CaibuCD");
 					player:AddModifier("Story_Caibuzhidao1");
 					player.PropertyMgr:AddMaxAge(1);
-					target.PropertyMgr:AddMaxAge(- 10);
+					target.PropertyMgr:AddMaxAge(5);
 					self:SetTxt(""..player.Name.."用脚撑开对方双腿，两手用力揉搓着"..target.Name.."那丰满的双峰，只见"..target.Name.."越来越骚，"..player.Name.."把脚探入那秘洞之中，那"..target.Name.."不停扭动屁股，"..player.Name.."按着对方肩膀张开嘴运转心法对着那双峰使劲的吸，一股暖流渐入腹中。");
 					end
 				end
@@ -163,7 +163,7 @@ function tbTalkAction:Action(player,target)
 							target:AddModifier("CaibuCD");
 							player:AddModifier("Story_Caibuzhidao1");
 							player.PropertyMgr:AddMaxAge(1);
-							target.PropertyMgr:AddMaxAge(- 10);
+							target.PropertyMgr:AddMaxAge(5);
 							JianghuMgr:AddKnowNpcData(target.JiangHuSeed,CS.XiaWorld.g_emJHNpcDataType.None,50);
 							self:SetTxt(""..player.Name.."使用幻术迷住了"..target.Name.."后，将她按倒在地，一把撕去了"..target.Name.."的裤子，"..target.Name.."的惊呼也没让他产生半点怜悯，请出自己胯下的小兄弟，便在对方对方蜜穴中来来回回抽插了百余下，于"..target.Name.."高潮之际，掠走了对方不少精元后。\n"..player.Name.."感觉自己的灵气有所提升。");
 							end
@@ -180,7 +180,7 @@ function tbTalkAction:Action(player,target)
 								target:AddModifier("CaibuCD");
 								player:AddModifier("Story_Caibuzhidao1");
 								player.PropertyMgr:AddMaxAge(1);
-								target.PropertyMgr:AddMaxAge(- 10);
+								target.PropertyMgr:AddMaxAge(5);
 								JianghuMgr:AddKnowNpcData(target.JiangHuSeed,CS.XiaWorld.g_emJHNpcDataType.None,50);
 								self:SetTxt(""..player.Name.."刚掀起自己的裙角，"..target.Name.."便急不可待的像条公狗一样冲了上来，将自己的小兄弟插入了"..player.Name.."蜜壶中，随后便是一阵猪突蒙进，直到元阳不守一泄如注，大量的元阳灌注与"..player.Name.."蜜穴之中以供"..player.Name.."炼化。\n"..player.Name.."感觉自己的灵气有所提升。");
 							end
@@ -191,7 +191,7 @@ function tbTalkAction:Action(player,target)
 						target:AddModifier("CaibuCD");
 						player:AddModifier("Story_Caibuzhidao1");
 						player.PropertyMgr:AddMaxAge(1);
-						target.PropertyMgr:AddMaxAge(- 10);
+						target.PropertyMgr:AddMaxAge(5);
 						JianghuMgr:AddKnowNpcData(target.JiangHuSeed,CS.XiaWorld.g_emJHNpcDataType.None,50);
 						self:SetTxt("没有任何男人可能拒绝的了"..player.Name.."的要求，"..player.Name.."正大光明的告诉了"..target.Name.."她想要他的精元用于修炼，"..target.Name.."便跪倒在了"..player.Name.."的面前，看着"..player.Name.."那全世界为其倾倒的绝美容颜，想着其竟向自己索取阳精"..target.Name.."的针线活还没开始便已经结束，子弹便如连珠炮射而出，"..player.Name.."将"..target.Name.."的精元炼化，感觉自身的灵气有所提升。");
 					elseif player.LuaHelper:GetGLevel() == target.LuaHelper:GetGLevel() then
@@ -213,7 +213,7 @@ function tbTalkAction:Action(player,target)
 								target:AddModifier("CaibuCD");
 								player:AddModifier("Story_Caibuzhidao1");
 								player.PropertyMgr:AddMaxAge(1);
-								target.PropertyMgr:AddMaxAge(- 10);
+								target.PropertyMgr:AddMaxAge(5);
 								JianghuMgr:AddKnowNpcData(target.JiangHuSeed,CS.XiaWorld.g_emJHNpcDataType.None,50);
 								self:SetTxt(""..player.Name.."使用幻术迷住了"..target.Name.."后，将她按倒在地，一把撕去了"..target.Name.."的裤子，"..target.Name.."的惊呼也没让他产生半点怜悯，请出自己胯下的小兄弟，便在对方对方蜜穴中来来回回抽插了百余下，于"..target.Name.."高潮之际，掠走了对方不少精元后。\n"..player.Name.."感觉自己的灵气有所提升。");
 								end
@@ -231,7 +231,7 @@ function tbTalkAction:Action(player,target)
 									target:AddModifier("CaibuCD");
 									player:AddModifier("Story_Caibuzhidao1");
 									player.PropertyMgr:AddMaxAge(1);
-									target.PropertyMgr:AddMaxAge(- 10);
+									target.PropertyMgr:AddMaxAge(5);
 									JianghuMgr:AddKnowNpcData(target.JiangHuSeed,CS.XiaWorld.g_emJHNpcDataType.None,50);
 									self:SetTxt(""..player.Name.."刚掀起自己的裙角，"..target.Name.."便急不可待的像条公狗一样冲了上来，将自己的小兄弟插入了"..player.Name.."蜜壶中，随后便是一阵猪突蒙进，直到元阳不守一泄如注，大量的元阳灌注与"..player.Name.."蜜穴之中以供"..player.Name.."炼化。\n"..player.Name.."感觉自己的灵气有所提升。");
 								end

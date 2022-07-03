@@ -38,7 +38,7 @@ local Wfxg = CS.XiaWorld.JianghuMgr.Instance:GetJHNpcDataBySeed(player.JiangHuSe
 local Dfxg = CS.XiaWorld.JianghuMgr.Instance:GetJHNpcDataBySeed(target.JiangHuSeed).Feature
 local XianzheCD = target.LuaHelper:GetModifierStack("XianzheCD");
 local NalitongCD = target.LuaHelper:GetModifierStack("NalitongCD");
-local seyouCD = NalitongCD + XianzheCD
+local seyouCD = 0 --NalitongCD + XianzheCD
 local jueseming = CS.XiaWorld.JianghuMgr.Instance:GetJHNpcName(target.JiangHuSeed)
 local yuanfen = CS.XiaWorld.JianghuMgr.Instance:GetFateBetween(player,target)
 print(player.Name.."互动对象的真实姓名为："..jueseming.."当前"..target.Age.."岁，两人缘分："..yuanfen)
@@ -474,14 +474,14 @@ print(player.Name.."互动对象的真实姓名为："..jueseming.."当前"..tar
 	end--ntr判定失败开始色诱剧本
 		if player.Sex == CS.XiaWorld.g_emNpcSex.Male then
 			if target.Sex == CS.XiaWorld.g_emNpcSex.Male then
-				if meili < 5 and target.PropertyMgr:CheckFeature("Feminization") and player.LuaHelper:GetGLevel() > target.LuaHelper:GetGLevel() then
+				--if meili < 5 and target.PropertyMgr:CheckFeature("Feminization") and player.LuaHelper:GetGLevel() > target.LuaHelper:GetGLevel() then
 				self:SetTxt(""..player.Name.."修行间歇越发感觉下体有股欲火熊熊，但却因相貌丑陋苦无同门师姐妹们的垂青，竟然无人愿与"..player.Name.."媾和，便想到师姐妹们的居所去顺些裘衣、裘裤、足袋、或是偷窥洗浴、练功以自行解决。没想行至半路却见那外门弟子"..target.Name.."正在弯腰处理杂务，那纤瘦的腰肢、滚圆上翘的臀线、隐隐的透出女子之态，"..player.Name.."看的竟然有些发痴。\n“"..target.Name.."、你过来。”"..target.Name.."闻声便停下手中杂务站起身来，见是内门师兄"..player.Name.."唤他便恭步迎向前来，俯身作揖。\n"..target.Name.."的修行服本就是外门的男弟子统一款式、略显宽大，"..player.Name.."目光如电，早已顺着那宽松的领口向内望去。只见"..target.Name.."那玉白的肌肤，清秀的锁骨、阳光的照射下散发出粉里透白的霞光。\n"..player.Name.."眼中淫邪之光大盛，但也只是一闪而过、随即便消失的一干二净，变得古井不波、真诚而又平和。“你在外门也有些时日了，师兄我虽然不能教你一些本门的功法，但是念在你勤劳本分、这里有一些小小的神通还是可以教于你，你可想学之一二？”\n“诺！”"..target.Name.."抬起头来，见"..player.Name.."那真诚的目光，惊喜万分，“无量天尊、承蒙师兄恩泽、师弟永世不忘。”\n“你随我来。”"..player.Name.."转身便走向附近的树林中，只是那眼中的淫邪之光如同着了火一般，火光大盛、咄咄逼人。\n"..player.Name.."与"..target.Name.."一前一后往森林深处走去，四下无人，只见"..player.Name.."猛然转身，手掐法印、口中念念有词，那眼中的淫邪之光更是毫无遮敛。\n“师兄！你……”"..target.Name.."刚想开口询问，便被"..player.Name.."用法术束缚、"..target.Name.."见"..player.Name.."眼中之火，惊慌失措、胡乱挣扎，“师兄……你……求求你饶了我吧……求求你了！”\n"..player.Name.."也不答话，任由"..target.Name.."惊恐挣扎、高声求饶。啧啧有声道“没想到呀，本门的师弟竟然还有这番姿色，妙！实在是妙！”言罢又掐起法印，"..target.Name.."进缓缓的飘了起来。\n“去！”"..player.Name.."抬起右手轻轻一点，"..target.Name.."的衣裳竟开始逐渐滑落，裸露出大片的玉白色肌肤，纤瘦的小小身躯逐渐显露出来，胸前微微有些隆起的胸肌和两点粉红看的"..player.Name.."血脉喷张，下身的肉棒高高抬起，把修行服的下摆撑起一个小小的帐篷。\n"..player.Name.."欺身压近，充满欲望的目光如烈火一般灼烧着"..target.Name.."裸露出的每一片肌肤，修长的手指划过"..target.Name.."的脸颊、锁骨、胸膛、滑进那未被目光侵蚀的地方。\n“别……”\n“嘘。”"..player.Name.."轻声打断了"..target.Name.."，同时默运功法，一股奇特的香气在两人之间弥散开来。\n这是什么香气？好像在内门师姐的居所附近闻到过，好舒服。"..target.Name.."心中疑惑，但是转眼之间"..target.Name.."便迷失在这沁人心脾的香氛中。\n"..player.Name.."嘿嘿轻笑，褪去了"..target.Name.."的衣服，雪白的胴体完全暴露在眼前，没想到不但身形像女子，就连下身也很是相似，"..target.Name.."的下身并不硕大，甚至要比普通人小很多，翘立的小肉棒竟如小指一般大小，散发出一股微骚的奶甜气息。\n"..player.Name.."不由食指大动，喉结滚动。一口含住"..target.Name.."的肉棒，吮动起来。\n"..target.Name.."的身体一阵颤抖，檀口大张，一波又一波强烈的快感冲击着全身，宛如狂海之中的一叶扁舟。\n"..player.Name.."立刻把自己剥了个精光，挺立的肉棒刺入"..target.Name.."口中，前后耸动起来，两人飘立在半空之中，抵死缠绵。\n纠缠半晌，"..target.Name.."突然浑身颤抖，双手紧紧的抱着"..player.Name.."双腿盘上"..player.Name.."的臂膀，发疯了一般套弄着"..player.Name.."的肉棒，舌头纠缠着肉棒前段的沟壑。“嗯……”"..player.Name.."舒爽的闷哼一声，下身更是猛力一挺，硕大的龟头死死的顶着"..target.Name.."的喉咙。精关大开，一股股粘稠的阳精伴着下身的挺动喷薄而出。同时，"..player.Name.."也觉得一股滚烫的液体喷入自己口中，微苦而又甘甜。喉结滚动，同时吞下彼此的精华，"..target.Name.."也因为"..player.Name.."抽出肉棒而清醒了过来。\n两人整理衣衫，"..target.Name.."眼神迷离的偎依在"..player.Name.."身旁，望着"..player.Name.."的脸庞，“师哥……我……”"..target.Name.."还未说完，"..player.Name.."便用嘴巴堵住了"..target.Name.."话语，吻毕，“我会再来找你的。”"..player.Name.."说道。！");
 				player:AddModifier("XianzheCD");
 				target:AddModifier("XianzheCD");
 				player.PropertyMgr.RelationData:AddRelationShip(target,"Lover");
-				else
-				self:SetTxt(""..target.Name.."：滚！");
-				end
+				--else
+				--self:SetTxt(""..target.Name.."：滚！");
+				--end
 			elseif Dfxg == CS.XiaWorld.g_emJHNpc_Feature.Greedy and player.LuaHelper:GetModifierStack("Qian") >= 100 and target.PropertyMgr:CheckFeature("Pogua") == true then
 			self:SetTxt(""..player.Name.."邪魅的瞥了"..target.Name.."一眼，舔了舔嘴唇，手沿着强健优美的胸膛向下划入怀中。\n“女人，正面上我，伺候得我舒服，这些都是你的。”说罢从怀中抓出一把银钱，顺势解开了衣服，雪白的银钱撒在了"..player.Name.."古铜色的肌肤上，交相辉映的光彩晃得"..target.Name.."喘不过气，“母狗，还不滚过来？”此刻"..player.Name.."侧躺在地上银钱散落的到处都是，"..target.Name.."望着"..player.Name.."胯下硕大的鸡巴狠狠咽了咽口水，情不自禁的爬了过去，张开小嘴用力将"..player.Name.."的鸡巴含了进去，吃力的舔弄了起来，"..player.Name.."翻身踢开了她，面对"..target.Name.."不解的目光，"..player.Name.."抬起了脚送到"..target.Name.."的嘴边，"..target.Name.."迟疑了一下，还是伸出香舌，舔舐了起来。\n从鸡巴到脚再到屁眼，"..target.Name.."舔吸的力量逐渐迟缓了下来，已是春情荡漾浑身无力，于是"..player.Name.."翻身上马撕开了"..target.Name.."的衣裙，定睛一看，"..target.Name.."粉嫩的阴唇早已淫水泛滥、饥渴难耐，于是"..player.Name.."毫不犹豫、持枪而入。“啊！轻点，好大，我受不了了。”\n"..player.Name.."的大鸡巴插得"..target.Name.."欲仙欲死，原本寂静的四周充斥着"..target.Name.."淫叫。\n"..player.Name.."不管不顾大力抽插，又是几百回合下来，插得"..target.Name.."阴精狂泄、高潮迭起，见"..target.Name.."已无力再战，"..player.Name.."闷哼一声，用力一插，龟头一紧，大量滚烫的阳精灌入"..target.Name.."的子宫之中，此时的"..target.Name.."虽已是被干的头晕目眩、意乱情迷，却也没有忘记银钱，事毕之后取走了那百两纹银只留下了一句，“老板下次再找我啊！”便离开了。");
 			target:AddModifier("XianzheCD");
@@ -520,7 +520,10 @@ print(player.Name.."互动对象的真实姓名为："..jueseming.."当前"..tar
 			player:AddModifier("XianzheCD");
 			target.PropertyMgr.RelationData:AddRelationShip(player,"PersonalEnemy");
 			else
-			self:SetTxt(""..target.Name.."：滚！");
+			self:SetTxt(""..target.Name.."不愿意与"..player.Name.."欢好，奈何实力不济，被"..player.Name.."按倒在地，强行奸污了……");
+			target:AddModifier("NalitongCD");
+			player:AddModifier("XianzheCD");
+			target.PropertyMgr.RelationData:AddRelationShip(player,"PersonalEnemy");
 			end
 		elseif target.Sex ~= CS.XiaWorld.g_emNpcSex.Male then
 			local sj1 = world:RandomInt(1,3)

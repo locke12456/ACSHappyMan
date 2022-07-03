@@ -1,7 +1,7 @@
 -- 囚犯互动
 local tbTable = GameMain:GetMod("MagicHelper");
 local tbMagic = tbTable:GetMagic("Magic_Zhazhiji");
-
+local Hudong = GameMain:GetMod("Lua_hudong");
 
 function tbMagic:Init()
 end
@@ -25,7 +25,17 @@ end
 function tbMagic:MagicLeave(success)	
 local npc1 = self.bind
 if npc1.Sex == CS.XiaWorld.g_emNpcSex.Male then
-CS.Wnd_StorySelect.Select("榨汁姬",""..npc1.Name.."是男性，无法化身榨汁姬！",nil,nil)
+--CS.Wnd_StorySelect.Select("榨汁姬",""..npc1.Name.."是男性，无法化身榨汁姬！",nil,nil)
+			local targets = Map.Things:GetNpcsLua(
+			function(n)
+				return n.Sex == CS.XiaWorld.g_emNpcSex.Female and n.IsDisciple;
+			end);
+			for i = 0, targets.Count-1, 1 do
+				local target = targets[i];
+				if target ~= nil then
+					GameMain:GetMod("Lua_hudong"):ShuangxiuStart(npc1, npc2)
+				end
+			end
 return false;
 end
 	if npc1.LuaHelper:GetModifierStack("Tiaodan") ~= 0 then
