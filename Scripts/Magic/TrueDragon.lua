@@ -37,12 +37,25 @@ function tbMagic:MagicEnter(IDs, IsThing)
 
 	for i=0,count - 1,1 do
 		local npc = Map.Things:GetActiveNpcs()[i]
-		if npc.IsDisciple and npc.Sex ~=self.bind.Sex then
+		if npc.Camp == CS.XiaWorld.Fight.g_emFightCamp.Player and  npc.IsDisciple and npc.Sex ~=self.bind.Sex then
 			--npc.PropertyMgr:AddModifier("MOD_LostSoul")
 			table.insert(hglist,npc)
 		end
 	end
-
+	for i=0,count - 1,1 do
+		local npc = Map.Things:GetActiveNpcs()[i]
+		if npc.Camp == CS.XiaWorld.Fight.g_emFightCamp.Player and npc.IsDisciple == false and npc.Sex ~=self.bind.Sex then
+			--npc.PropertyMgr:AddModifier("MOD_LostSoul")
+			table.insert(hglist,npc)
+		end
+	end
+	for i=0,count - 1,1 do
+		local npc = Map.Things:GetActiveNpcs()[i]
+		if npc.Camp == CS.XiaWorld.Fight.g_emFightCamp.Friend and npc.Sex ~=self.bind.Sex then
+			--npc.PropertyMgr:AddModifier("MOD_LostSoul")
+			table.insert(hglist,npc)
+		end
+	end
 	self:EnterChoice(hglist)
 end
 
@@ -451,7 +464,22 @@ function tbMagic:EnterHappy(npc)
 	--end
 
 end
-
+function tbMagic:GetLevelString(npc)
+local num = "";
+local enum = npc.LuaHelper:GetGLevel();
+if enum == 0 then
+num = "外门";
+elseif enum <= 3 then
+num = "練氣";
+elseif enum <= 6 then
+num = "結丹";
+elseif enum <= 9 then
+num = "金丹";
+else
+num = "元神以上";
+end
+return num;
+end
 function tbMagic:GetListName(hglist)
 local list = {}
 for k,v in pairs(hglist) do
@@ -479,7 +507,7 @@ for k,v in pairs(hglist) do
 		local AGE = v.Age - v.Age%1
 		age = "["..AGE.."岁]";
 
-		list[k] = v.Name..sex..age..level..gua;
+		list[k] =  "["..self:GetLevelString(v).."]"..v.Name..sex..age..gua;
 end
 list[#list+ 1] = "选择完成"
 return list;
