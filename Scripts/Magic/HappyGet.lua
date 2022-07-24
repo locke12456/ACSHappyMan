@@ -100,7 +100,7 @@ function tbMagic:EnterHappy(npc)
 			end
 		npc.PropertyMgr:AddFeature("Pogua");
 		self.bind.PropertyMgr:ModifierProperty("NpcLingMaxValue", num,0)
-		npc.PropertyMgr:AddMaxAge(-30)
+		--npc.PropertyMgr:AddMaxAge(-30)
 		npc.PropertyMgr:AddModifier("HappyGetFirstBuff")
 		npc.PropertyMgr:AddModifier("HappyGetDebuff")
 		self.bind.PropertyMgr:AddModifier("HappyGetBuff")

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="2fevh8bi">
+  <resources>
+    <component id="v6070" name="SampleWindow.xml" path="/" exported="true"/>
+    <misc id="vpv51" name="10.mp4" path="/"/>
+    <misc id="vpv52" name="output.ogv" path="/"/>
+  </resources>
+  <publish name="Sample"/>
+</packageDescription>

@@ -345,8 +345,8 @@ function tbTalkAction:xuexi(player,target)
 	else
 	target:AddLing(player.LuaHelper:GetProperty("NpcLingMaxValue"));
 	player:AddLing(target.LuaHelper:GetProperty("NpcLingMaxValue"));
-	player.Needs:AddNeedValue(CS.XiaWorld.g_emNeedType.Practice,target.LuaHelper:GetGLevel() * 10)
-	target.Needs:AddNeedValue(CS.XiaWorld.g_emNeedType.Practice,player.LuaHelper:GetGLevel() * 10)
+	player.Needs:AddNeedValue(CS.XiaWorld.g_emNeedType.Practice,target.LuaHelper:GetGLevel() * 100)
+	target.Needs:AddNeedValue(CS.XiaWorld.g_emNeedType.Practice,player.LuaHelper:GetGLevel() * 100)
 	player.LuaHelper:AddPracticeResource("Stage",5 * target.PropertyMgr.Practice:GetDaoHang() * target.LuaHelper:GetGLevel());
 	target.LuaHelper:AddPracticeResource("Stage",5 * player.PropertyMgr.Practice:GetDaoHang() * player.LuaHelper:GetGLevel());
 	player:AddModifier("ShuangxiuCD");

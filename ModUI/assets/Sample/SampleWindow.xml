@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1024,768">
+  <displayList>
+    <component id="n0_v607" name="frame" src="v6073f" fileName="Window/WindowFrame.xml" pkg="ncbwb41m" xy="0,0" size="1024,798">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n1_v607" name="bnt_1" src="v6070" fileName="Button/Button.xml" pkg="ncbwb41m" xy="923,749">
+      <Button title="按钮1"/>
+    </component>
+    <component id="n2_v607" name="bnt_2" src="v9j6ah" fileName="Button/Button2.xml" pkg="ncbwb41m" xy="467,753" size="85,27"/>
+    <component id="n13_e4d4" name="bnt_3" src="v6075" fileName="Button/IconButton.xml" pkg="ncbwb41m" xy="106,173" size="47,41">
+      <Button title="按钮3"/>
+    </component>
+    <component id="n21_is9d" name="n21" src="v607a" fileName="ComboBox/ComboBox.xml" pkg="ncbwb41m" xy="840,749">
+      <ComboBox visibleItemCount="10">
+        <item title="a"/>
+        <item title="b"/>
+      </ComboBox>
+    </component>
+    <loader id="n18_e4d4" name="loader" xy="14,66" size="994,590" align="center" vAlign="middle" fill="scaleMatchHeight"/>
+    <component id="n27_amhq" name="pre" src="v6070" fileName="Button/Button.xml" pkg="ncbwb41m" xy="371,754">
+      <Button title="pre"/>
+    </component>
+    <component id="n28_amhq" name="next" src="v6070" fileName="Button/Button.xml" pkg="ncbwb41m" xy="563,753">
+      <Button title="next"/>
+    </component>
+    <component id="n29_amhq" name="next_10" src="v6070" fileName="Button/Button.xml" pkg="ncbwb41m" xy="658,754" size="40,25">
+      <Button title="&gt;&gt;"/>
+    </component>
+    <component id="n30_amhq" name="pre_10" src="v6070" fileName="Button/Button.xml" pkg="ncbwb41m" xy="325,754" size="40,25">
+      <Button title="&lt;&lt;"/>
+    </component>
+    <text id="n5_e4d4" name="label_2" xy="4,633" size="1011,110" fontSize="12" color="#2b231b" align="center" vAlign="middle" ubb="true" autoSize="none" text="这是一个Label"/>
+  </displayList>
+</component>

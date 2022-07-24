@@ -142,7 +142,7 @@ local npc = GameMain:GetMod("MapCaiBu"):GetNpc()[2]
 		end
 		npc.PropertyMgr:AddFeature("Pogua");
 		my.PropertyMgr:ModifierProperty("NpcLingMaxValue", num,0)
-		npc.PropertyMgr:AddMaxAge(-30)
+		--npc.PropertyMgr:AddMaxAge(-30)
 		npc.PropertyMgr:AddModifier("HappyGetFirstBuff")
 		npc.PropertyMgr:AddModifier("HappyGetDebuff")
 		my.PropertyMgr:AddModifier("HappyGetBuff")

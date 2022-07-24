@@ -317,7 +317,7 @@ function Hudong:ShuangxiuStart(npc1, npc2)
 			npc2.LuaHelper:AddPracticeResource("Ling",npc2.LuaHelper:GetProperty("NpcLingMaxValue"))
 			npc1:AddModifier("ShuangxiuCD");
 			npc2:AddModifier("ShuangxiuCD");
-			npc1.PropertyMgr:AddMaxAge(- 60);
+			--npc1.PropertyMgr:AddMaxAge(- 60);
 			else
 			me:AddMsg(""..npc1.Name.."已经不足一甲子了，想来就算用命去换，也对"..npc2.Name.."结丹帮助不大了……");
 			end

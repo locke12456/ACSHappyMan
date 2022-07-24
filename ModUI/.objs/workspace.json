@@ -1,0 +1,43 @@
+{
+  "libview.firstColumnWidth": 209,
+  "libview.iconScale": 0,
+  "backgroundColor": 6710886,
+  "auxline1": true,
+  "canvasColor": 10066329,
+  "auxline2": true,
+  "doc.activeDoc": "ui://2fevh8biv6070",
+  "libview.twoColumn": false,
+  "libview.expandedNodes": [
+    "ncbwb41m",
+    "/",
+    "ncbwb41m",
+    "/Button/",
+    "ncbwb41m",
+    "/Checkbox/",
+    "ncbwb41m",
+    "/ComboBox/",
+    "ncbwb41m",
+    "/Input/",
+    "ncbwb41m",
+    "/List/",
+    "ncbwb41m",
+    "/Menu/",
+    "ncbwb41m",
+    "/ProgressBar/",
+    "ncbwb41m",
+    "/Slider/",
+    "ncbwb41m",
+    "/Window/",
+    "ncbwb41m",
+    "/images/",
+    "2fevh8bi",
+    "/"
+  ],
+  "doc.openedDocs": [
+    "ui://2fevh8biv6070"
+  ],
+  "snapToGrid": true,
+  "gridColor": 80,
+  "libview.currentGroup": "",
+  "gridSize": 30
+}
