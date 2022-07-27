@@ -269,71 +269,58 @@ function tbTalkAction:Action(player,target)
 		end
 	end
 end
-
+function tbTalkAction:xuexiBodyAdd(target)
+	target.Needs:AddNeedValue(CS.XiaWorld.g_emNeedType.Practice,target.LuaHelper:GetGLevel() * 100)
+	if target.Sex == CS.XiaWorld.g_emNpcSex.Male then
+		if ThingMgr:FindThingByID(target.ID).PropertyMgr.Practice.GodCount > 0 then
+		target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yinjin",32);
+		elseif target.LuaHelper:GetGLevel() > 9 then
+		target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yinjin",16);
+		elseif target.LuaHelper:GetGLevel() > 6 then
+		target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yinjin",8);
+		elseif target.LuaHelper:GetGLevel() > 3 then
+		target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yinjin",4);
+		elseif target.LuaHelper:GetGLevel() > 0 then
+		target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yinjin",2);
+		else
+		target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yinjin",1);
+		end
+	else
+		if ThingMgr:FindThingByID(target.ID).PropertyMgr.Practice.GodCount > 0 then
+		target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yangjin",32);
+		elseif target.LuaHelper:GetGLevel() > 9 then
+		target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yangjin",16);
+		elseif target.LuaHelper:GetGLevel() > 6 then
+		target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yangjin",8);
+		elseif target.LuaHelper:GetGLevel() > 3 then
+		target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yangjin",4);
+		elseif target.LuaHelper:GetGLevel() > 0 then
+		target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yangjin",2);
+		else
+		target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yangjin",1);
+		end
+	end
+end
+function tbTalkAction:xuexiLingAdd(target, player)
+	print(target.Name.."add ling:"..target.LuaHelper:GetProperty("NpcLingMaxValue"))
+	target:AddLing(target.LuaHelper:GetProperty("NpcLingMaxValue"));
+	target.Needs:AddNeedValue(CS.XiaWorld.g_emNeedType.Practice,player.LuaHelper:GetGLevel() * 100)
+	target.LuaHelper:AddPracticeResource("Stage",5 * player.PropertyMgr.Practice:GetDaoHang() * player.LuaHelper:GetGLevel());
+	target:AddModifier("ShuangxiuCD");
+	target.LuaHelper:AddTreeExp(1000 * player.LuaHelper:GetGLevel());
+end
 function tbTalkAction:xuexi(player,target)
 	if (player.GongKind == g_emGongKind.Body or target.GongKind == g_emGongKind.Body) and player.GongKind ~= target.GongKind then--一方是体修
-		player.Needs:AddNeedValue(CS.XiaWorld.g_emNeedType.Practice,target.LuaHelper:GetGLevel() * 10)
-		target.Needs:AddNeedValue(CS.XiaWorld.g_emNeedType.Practice,player.LuaHelper:GetGLevel() * 10)
+		--target.Needs:AddNeedValue(CS.XiaWorld.g_emNeedType.Practice,player.LuaHelper:GetGLevel() * 100)
 		if player.GongKind == g_emGongKind.Body then
-			if player.Sex == CS.XiaWorld.g_emNpcSex.Male then
-				if ThingMgr:FindThingByID(target.ID).PropertyMgr.Practice.GodCount > 0 then
-				player.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yinjin",32);
-				elseif target.LuaHelper:GetGLevel() > 9 then
-				player.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yinjin",16);
-				elseif target.LuaHelper:GetGLevel() > 6 then
-				player.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yinjin",8);
-				elseif target.LuaHelper:GetGLevel() > 3 then
-				player.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yinjin",4);
-				elseif target.LuaHelper:GetGLevel() > 0 then
-				player.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yinjin",2);
-				else
-				player.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yinjin",1);
-				end
-			else
-				if ThingMgr:FindThingByID(target.ID).PropertyMgr.Practice.GodCount > 0 then
-				player.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yangjin",32);
-				elseif target.LuaHelper:GetGLevel() > 9 then
-				player.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yangjin",16);
-				elseif target.LuaHelper:GetGLevel() > 6 then
-				player.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yangjin",8);
-				elseif target.LuaHelper:GetGLevel() > 3 then
-				player.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yangjin",4);
-				elseif target.LuaHelper:GetGLevel() > 0 then
-				player.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yangjin",2);
-				else
-				player.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yangjin",1);
-				end
-			end
+			self:xuexiBodyAdd(player);
 		else
-			if player.Sex == CS.XiaWorld.g_emNpcSex.Male then
-				if ThingMgr:FindThingByID(player.ID).PropertyMgr.Practice.GodCount > 0 then
-				target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yangjin",32);
-				elseif player.LuaHelper:GetGLevel() > 9 then
-				target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yangjin",16);
-				elseif player.LuaHelper:GetGLevel() > 6 then
-				target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yangjin",8);
-				elseif player.LuaHelper:GetGLevel() > 3 then
-				target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yangjin",4);
-				elseif player.LuaHelper:GetGLevel() > 0 then
-				target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yangjin",2);
-				else
-				target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yangjin",1);
-				end
-			else
-				if ThingMgr:FindThingByID(player.ID).PropertyMgr.Practice.GodCount > 0 then
-				target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yinjin",32);
-				elseif player.LuaHelper:GetGLevel() > 9 then
-				target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yinjin",16);
-				elseif player.LuaHelper:GetGLevel() > 6 then
-				target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yinjin",8);
-				elseif player.LuaHelper:GetGLevel() > 3 then
-				target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yinjin",4);
-				elseif player.LuaHelper:GetGLevel() > 0 then
-				target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yinjin",2);
-				else
-				target.PropertyMgr.Practice.BodyPracticeData:AddQuenchingItem("Item_yinjin",1);
-				end
-			end
+			self:xuexiLingAdd(player, target);
+		end
+		if target.GongKind == g_emGongKind.Body then
+			self:xuexiBodyAdd(target);
+		else
+			self:xuexiLingAdd(target, player);
 		end
 		player:AddModifier("ShuangxiuCD");
 		target:AddModifier("ShuangxiuCD");

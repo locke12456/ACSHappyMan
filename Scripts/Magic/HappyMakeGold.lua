@@ -2,7 +2,8 @@
 local tbMagic = tbTable:GetMagic("HappyMakeGold");
 
 function tbMagic:EnableCheck(npc)
-	if npc.LuaHelper:GetGongName() == "Gong_HappyMan" and npc.Sex == CS.XiaWorld.g_emNpcSex.Male then
+	--npc.LuaHelper:GetGongName() == "Gong_HappyMan" and
+	if npc.Sex == CS.XiaWorld.g_emNpcSex.Male then
 	return true;
 	else
 	return false;

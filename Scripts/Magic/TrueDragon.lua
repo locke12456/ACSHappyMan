@@ -20,7 +20,8 @@ local npc2 = nil;
 local current = 101;
 
 function tbMagic:EnableCheck(npc)
-	if npc.LuaHelper:GetGongName() == "Gong_HappyMan" and npc.Sex == CS.XiaWorld.g_emNpcSex.Male then
+	--npc.LuaHelper:GetGongName() == "Gong_HappyMan" and
+	if npc.Sex == CS.XiaWorld.g_emNpcSex.Male then
 	return true;
 	else
 	return false;
@@ -97,6 +98,8 @@ function tbMagic:MagicLeave(success)
 end
 
 function tbMagic:EnterChoice(hglist)
+	local max = 10 --self.bind:GetProperty("NpcFight_FabaoNum");
+
 local NameList = self:GetListName(hglist)
 	world:ShowStoryBox(""..self.bind.Name.."将从中选择合适的人物进行采补。", "采补选择",NameList,
 	function(Key)
@@ -110,7 +113,7 @@ local NameList = self:GetListName(hglist)
 
 		num = num + 1
 
-		if num >=self.bind:GetProperty("NpcFight_FabaoNum") then
+		if num >= max then
 			hglist = {}
 		end
 
