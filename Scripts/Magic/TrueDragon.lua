@@ -2,6 +2,7 @@
 local tbTable = GameMain:GetMod("MagicHelper");
 local tbMagic = tbTable:GetMagic("TrueDragon");
 local shuangxiu = GameMain:GetMod("JianghuMgr");
+local novel = GameMain:GetMod("Novel_01");
 local tbTalkAction = shuangxiu:GetTalkAction("Mod_shuangxiu");
 local msc = {100,500,700,1000} --男突破增加门派影响力
 local msp = {100,200,500,800}--男突破增加门派声望
@@ -39,6 +40,7 @@ function tbMagic:MagicEnter(IDs, IsThing)
 	local list1 = {}
 	local list2 = {}
 	local list3 = {}
+	self.current = 0;
 	if self.bind.LuaHelper:IsLearnedEsoteric("Gong_HappyMan_15") == true then
 		sum = 3
 	end
@@ -371,6 +373,7 @@ function tbMagic:Action(player,target)
 	end
 	return desc;
 end
+
 function tbMagic:EnterHappy(npc)
 	local sw = 0
 	world:ShowStoryBox(""..self.bind.Name.."将与"..npc.Name.."进行采补。", "采补选择",{"采补","放弃","強上","雙修-男推","逆雙修-被女推"},
@@ -391,15 +394,16 @@ function tbMagic:EnterHappy(npc)
 			flag = 1;
 			return self.bind.Name.."想了想，决定放弃采补。"
 		elseif key == 3 then
-			flag = 1;
+			--flag = 1;
 			--return npc2.Name.."想了想，决定放弃采补。改與"..npc1.Name.."雙修"
 			player.PropertyMgr:AddMaxAge(10);
 			target.PropertyMgr:AddMaxAge(30);
-			if random > 10 then--如果没有发生上面的事件，那有30%触发此事件
-			desc = desc..player.Name.."向"..target.Name.."提出双修的邀请，"..target.Name.."却显得不太情愿，可"..target.Name.."这等绝世容颜显然让"..player.Name.."欲火焚身难以自持了\n只见"..player.Name.."三下五除二的褪下对方衣衫，信手掏出胯下之物便如急色鬼附身一样在"..target.Name.."身上奋战了起来，"..player.Name.."的肉棒于于"..target.Name.."的蜜穴中来回冲杀，战至酣时"..player.Name.."甚至忘记了双修的本意，也管不得什么交而不泄止泄固元了。\n随着一声怒吼声，"..player.Name.."将自己滚热的阳精全部灌注于"..target.Name.."的蜜穴里。\n虽然这次双修最后还是成功了，但是这次精关失守"..player.Name.."损失了近一甲子的寿元。"
-			else
-			desc = desc..player.Name.."向"..target.Name.."提出双修的邀请，"..target.Name.."却显得不太情愿，然而实力的差距容不得"..target.Name.."摇头说不，只见"..player.Name.."施术摄住"..target.Name.."后便掏出肉棒不管不顾的捅进"..target.Name.."小穴之中，一阵阵猛烈的活塞运动让尚未做好准备的"..target.Name.."被干的两眼翻白几度昏死过去后又被操醒过来……\n酣畅之后，心满意足的"..player.Name.."放过了"..target.Name.."。"
-			end
+			desc = novel:GetNovel(player, target)
+			--if random > 10 then--如果没有发生上面的事件，那有30%触发此事件
+			--desc = desc..player.Name.."向"..target.Name.."提出双修的邀请，"..target.Name.."却显得不太情愿，可"..target.Name.."这等绝世容颜显然让"..player.Name.."欲火焚身难以自持了\n只见"..player.Name.."三下五除二的褪下对方衣衫，信手掏出胯下之物便如急色鬼附身一样在"..target.Name.."身上奋战了起来，"..player.Name.."的肉棒于于"..target.Name.."的蜜穴中来回冲杀，战至酣时"..player.Name.."甚至忘记了双修的本意，也管不得什么交而不泄止泄固元了。\n随着一声怒吼声，"..player.Name.."将自己滚热的阳精全部灌注于"..target.Name.."的蜜穴里。\n虽然这次双修最后还是成功了，但是这次精关失守"..player.Name.."损失了近一甲子的寿元。"
+			--else
+			--desc = desc..player.Name.."向"..target.Name.."提出双修的邀请，"..target.Name.."却显得不太情愿，然而实力的差距容不得"..target.Name.."摇头说不，只见"..player.Name.."施术摄住"..target.Name.."后便掏出肉棒不管不顾的捅进"..target.Name.."小穴之中，一阵阵猛烈的活塞运动让尚未做好准备的"..target.Name.."被干的两眼翻白几度昏死过去后又被操醒过来……\n酣畅之后，心满意足的"..player.Name.."放过了"..target.Name.."。"
+			--end
 			tbTalkAction:xuexi(player,target);
 			win:SetPicture(pic);
 			win:SetText(desc);
