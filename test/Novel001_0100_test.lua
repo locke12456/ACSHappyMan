@@ -17,6 +17,7 @@ require("Event/Novel_006")
 require("Event/Novel_008")
 require("Event/Novel_009")
 require("Event/Novel_010")
+require("Event/Novel_011")
 
 function test_Novel_text()
 	-- body
@@ -104,7 +105,7 @@ function test_Novel_text()
 	text = NovelTest:GetNovelAll()
 	assert( text ~= "")
 	print(text)
-	
+
 	print("Novel_009")
 	NovelTest = Novel["Novel_009"]
 	NovelTest:Init();
@@ -119,6 +120,18 @@ function test_Novel_text()
 
 	print("Novel_010")
 	NovelTest = Novel["Novel_010"]
+	NovelTest:Init();
+	NovelTest:InitRoles("Locke", "Yuri", "Milk", "Kelly", "Joe")
+	for index = 1, NovelTest.Count do
+		text = NovelTest:GetNovel(index)
+		assert( text ~= "")
+	end
+	text = NovelTest:GetNovelAll()
+	assert( text ~= "")
+	print(text)
+
+	print("Novel_011")
+	NovelTest = Novel["Novel_011"]
 	NovelTest:Init();
 	NovelTest:InitRoles("Locke", "Yuri", "Milk", "Kelly", "Joe")
 	for index = 1, NovelTest.Count do

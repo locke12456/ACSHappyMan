@@ -1633,13 +1633,13 @@ local mijian = world:GetWorldFlag(1710) + 1
 		me:AddMsg("[NAME]和已被调教成母狗的杨梓干了个爽……");
 			if npc1.GongKind == g_emGongKind.Body then 
 			local Panding = world:RandomInt(1,101);
-				if Panding < 6 and npc1.PropertyMgr.Practice.BodyPracticeData.SuperParts:ContainsKey("SuperPart_Nvquan_3") == false then
+				if npc1.PropertyMgr.Practice.BodyPracticeData.SuperParts:ContainsKey("SuperPart_Nvquan_3") == false then
 				me:AddMsg("干至忘我之时，杨梓说出了一门她们古墓派的武学秘要……");
 				npc1.PropertyMgr.Practice.BodyPracticeData:UnLockSuperPart("SuperPart_Nvquan_3")
-				elseif Panding > 95 and npc1.PropertyMgr.Practice.BodyPracticeData.SuperParts:ContainsKey("SuperPart_Nvquan_1") == false then
+				elseif npc1.PropertyMgr.Practice.BodyPracticeData.SuperParts:ContainsKey("SuperPart_Nvquan_1") == false then
 				me:AddMsg("干至忘我之时，杨梓说出了一门她们古墓派的武学秘要……");
 				npc1.PropertyMgr.Practice.BodyPracticeData:UnLockSuperPart("SuperPart_Nvquan_1")
-				elseif Panding > 90 and npc1.PropertyMgr.Practice.BodyPracticeData.SuperParts:ContainsKey("SuperPart_Nvquan_2") == false then
+				elseif npc1.PropertyMgr.Practice.BodyPracticeData.SuperParts:ContainsKey("SuperPart_Nvquan_2") == false then
 				me:AddMsg("干至忘我之时，杨梓说出了一门她们古墓派的武学秘要……");
 				npc1.PropertyMgr.Practice.BodyPracticeData:UnLockSuperPart("SuperPart_Nvquan_2")
 				end
