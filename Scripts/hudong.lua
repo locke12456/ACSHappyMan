@@ -177,7 +177,7 @@ local Dfxg = CS.XiaWorld.JianghuMgr.Instance:GetJHNpcDataBySeed(npc2.JiangHuSeed
 	me:AddMsg("作为"..SchoolMgr.Name.."的囚犯"..npc2.Name.."自然是无法拒绝"..SchoolMgr.Name.."弟子的，于是"..npc2.Name.."成为了"..npc1.Name.."的妻子并加入了"..SchoolMgr.Name.."。");
 	npc2.PropertyMgr:RemoveModifier("Prison_Modifier2");
 	npc1.PropertyMgr.RelationData:AddRelationShip(npc2,"Spouse");
-	npc2.LuaHelper:SetCamp(g_emFightCamp.Tixiu, false)
+	npc2.LuaHelper:SetCamp(g_emFightCamp.Player, false)
 		if npc2.LuaHelper:GetGLevel() > 0 then
 		npc2:ChangeRank(g_emNpcRank.Disciple);
 		end
@@ -559,7 +559,7 @@ npc2 = ThingMgr:FindThingByID(story:GetBindThing().ID)
 if npc1.LuaHelper:GetGLevel() == 0 or npc2.IsLingShou then
 return false;
 else
-	if npc1.PropertyMgr.Practice:CheckIsLearnedEsoteric("Gong1701_Esoterica_1") == true and npc1.PropertyMgr.RelationData:IsRelationShipWith("Spouse",npc2) == false and (npc2.IsTixiuThing or npc2.LuaHelper:GetModifierStack("Prison_Modifier2") ~= 0) then
+	if npc1.PropertyMgr.Practice:CheckIsLearnedEsoteric("Gong1701_Esoterica_1") == true and npc1.PropertyMgr.RelationData:IsRelationShipWith("Spouse",npc2) == false and (npc2.IsPlayerThing or npc2.LuaHelper:GetModifierStack("Prison_Modifier2") ~= 0) then
 	return true;
 	end
 end
@@ -1318,7 +1318,7 @@ npc2 = ThingMgr:FindThingByID(story:GetBindThing().ID)
 					npc2:AddModifier("XianzheCD");
 					npc1:AddModifier("XianzheCD");
 					if CS.GameMain.Instance.FightMap == false then
-					npc2.LuaHelper:SetCamp(g_emFightCamp.Tixiu, false)
+					npc2.LuaHelper:SetCamp(g_emFightCamp.Player, false)
 					end
 					me:AddMsg(""..npc1.Name.."假装不经意间的走光引得"..npc2.Name.."色欲大起，那白玉般的足尖尚未完全从履中脱出，"..npc2.Name.."便迫不及待的连带着鞋履捧起了这天赐之物，跪倒在地如同舔舐牛奶的猫咪一般舔舐了起来，只听轻笑见"..npc1.Name.."解下罗裙，蜜穴完完全全展露与"..npc2.Name.."眼前，"..npc2.Name.."仿佛获得了万般激励，顿时化为发情的公狗，于"..npc1.Name.."身上驰骋了数个时辰，知道阳关大泄，此时此刻"..npc2.Name.."才仿佛领悟到了活着的真正意义，成为"..npc1.Name.."石榴裙下的俘虏之一。");
 					end
@@ -1335,7 +1335,7 @@ npc2 = ThingMgr:FindThingByID(story:GetBindThing().ID)
 				me:AddMsg(""..npc2.Name.."是江湖上有名的冷面郎君，斩敌破阵好不容情，可他的冷只在见到"..npc1.Name.."之前能够维持，当他见到"..npc1.Name.."之后，瞬间成为了她裙下之臣，甘愿为她舔脚当狗。");
 				npc1.PropertyMgr.RelationData:AddRelationShip(npc2,"Luding2");
 				if CS.GameMain.Instance.FightMap == false then
-				npc2.LuaHelper:SetCamp(g_emFightCamp.Tixiu, false)
+				npc2.LuaHelper:SetCamp(g_emFightCamp.Player, false)
 				end
 				else
 					if npc1.LuaHelper:GetGLevel() > npc2.LuaHelper:GetGLevel() then
@@ -1346,7 +1346,7 @@ npc2 = ThingMgr:FindThingByID(story:GetBindThing().ID)
 						npc2.PropertyMgr:AddMaxAge(- 10);
 						npc1.PropertyMgr.RelationData:AddRelationShip(npc2,"Luding2");
 						if CS.GameMain.Instance.FightMap == false then
-						npc2.LuaHelper:SetCamp(g_emFightCamp.Tixiu, false)
+						npc2.LuaHelper:SetCamp(g_emFightCamp.Player, false)
 						end
 							if npc1.PropertyMgr:CheckFeature("Pogua") ~= true then
 							npc1.PropertyMgr:AddFeature("Pogua");
@@ -1565,7 +1565,7 @@ local npc2s = Map.Things:GetNpcsLua(
 	for i = 0, npc2s.Count-1, 1 do
 	local npc2 = npc2s[i];
 		if npc2 ~= nil then
-			if npc2.IsTixiuThing then
+			if npc2.IsPlayerThing then
 			else
 			ThingMgr:RemoveThing(npc2,false,true)
 			sirenshu = sirenshu + 1
@@ -1588,7 +1588,7 @@ local npc2s = Map.Things:GetNpcsLua(
 	for i = 0, npc2s.Count-1, 1 do
 	local npc2 = npc2s[i];
 		if npc2 ~= nil then
-			if npc2.IsTixiuThing then
+			if npc2.IsPlayerThing then
 			else
 			ThingMgr:RemoveThing(npc2,false,true)
 			sirenshu = sirenshu + 1
@@ -2028,20 +2028,11 @@ Panding = world:RandomInt(1,101);
 	elseif (JgName == "水" or JgName == "野外的水") and Panding > 99 then
 	Hudong:xuexiYYZS()
 	else
-		if JgName == "宝贝儿" and Tixiu.PropertyMgr.Practice.BodyPracticeData.SuperParts:ContainsKey("SuperPart_Base_shiqi_1") then
-			me:AddMsg(""..Jingguai.Name.."作为先天女宝贝儿精，光是闻到"..Tixiu.Name.."身上散发的那浓郁的纯阳之气便浑身发软了，对于"..Tixiu.Name.."的雙修，"..Tixiu.Name.."自是毫不犹豫的答应了。\n"..Tixiu.Name.."与"..Jingguai.Name.."幹了一砲。");
-		elseif JgName == "宝贝儿" then
-			me:AddMsg(""..Jingguai.Name.."作为先天女宝贝儿精，光是闻到"..Tixiu.Name.."身上散发的那浓郁的纯阳之气便浑身发软了，对于"..Tixiu.Name.."的雙修，"..Tixiu.Name.."自是毫不犹豫的答应了。\n"..Tixiu.Name.."与"..Jingguai.Name.."幹了一砲，在洞房花烛之夜，"..Tixiu.Name.."破"..Jingguai.Name.."瓜之时，从对方的血脉中，习得了上古传承秘体《定海神针》。");
-			Tixiu.PropertyMgr.Practice.BodyPracticeData:UnLockSuperPart("SuperPart_Base_shiqi_1");
-		else
-		Hudong:xuexiYYZS()
-		end
-	--print(""..Tixiu.Name.."在和"..JgName.."精"..Jingguai.Name.."双修的过程中，什么都没学会。")
+	print(""..Tixiu.Name.."在和"..JgName.."精"..Jingguai.Name.."双修的过程中，什么都没学会。")
 	end
 end
 
 function Hudong:xuexiYYZS()
-
 	if Tixiu.PropertyMgr.Practice.BodyPracticeData.SuperParts:ContainsKey("SuperPart_Base_shiqi_1") then
 	me:AddMsg(""..Tixiu.Name.."在双修过程中，从"..JgName.."精"..Jingguai.Name.."身上学会了一门他本身就会的秘体……");
 	else
